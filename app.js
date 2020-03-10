@@ -22,8 +22,8 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
     if(gamePlaying) {
         // 1 - random number
         // var dice = Math.floor(Math.random() * 6) + 1;          
-        var dice1 = randomIntFromInterval(1,6);
-        var dice2 = randomIntFromInterval(1,6);
+        var dice1 = randomIntFromInterval(4,6);
+        var dice2 = randomIntFromInterval(4,6);
         
         document.querySelector('#dice1').classList.remove('dice-off');
         document.querySelector('#dice2').classList.remove('dice-off');
@@ -42,22 +42,16 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
             // add score
             roundScore += dice1 + dice2;
             document.querySelector('#current-' + activePlayer).textContent = roundScore;
-            // console.log('active player: ' + activePlayer + ' current dice1 is : ' + dice1);
-            // console.log('active player: ' + activePlayer + ' previous dice1 is : ' + previousDice1);
-            // console.log('active player: ' + activePlayer + ' current dice2 is : ' + dice2);
-            // console.log('active player: ' + activePlayer + ' previous dice2 is : ' + previousDice2);
-            
-            // check if current dice equal 6 and previous dice different from 6
+
+            // check if current dices equal 6 and previous dices different from 6
             if (dice1 === 6 && dice2 === 6){
-                // console.log('active player: ' + activePlayer + ' DOUBLE SIX!!!!!!');
-                // resetPlayer();
+                resetPlayer();
             } else if(dice1 === 6 && previousDice1 !== 6 ) {
-                // console.log('active player: ' + activePlayer + ' current dice is: ' + dice + ' and previous dice is: ' + previousDice);
                 previousDice1 = dice1;
                 previousDice2 = dice2;
-            // check if current dice and previous dice equal six to reset complete score of active player
+            // check if current dices and previous dices equal six to reset complete score of active player
             } else if((dice1 === 6 && previousDice1 === 6) || (dice2 === 6 && previousDice2 === 6) ) {
-                // console.log('active player: ' + activePlayer + ' dice === 6 && previousDice === 6 >>>>>> RESET');
+                console.log('active player: ' + activePlayer + ' dice === 6 && previousDice === 6 >>>>>> RESET');
                 resetPlayer();
             }          
         } else {
